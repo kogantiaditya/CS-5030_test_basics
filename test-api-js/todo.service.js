@@ -24,6 +24,9 @@ class todoservice{
 
     add_todo(todo){
         // Your code here
+        this.todos.todo.push(todo);
+        console.log("appended todo: " + todo);
+        console.log("updated todos- " + this.todos.todo);
     }
 
     delete_todo(id){
