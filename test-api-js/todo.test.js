@@ -1,5 +1,6 @@
 var todoservice = require("./todo.service.js");
 describe("todo test suite", () => {
+
   test("truth_value", () => {
     expect(true).toBe(true);
   });
@@ -12,7 +13,7 @@ describe("todo test suite", () => {
 
   // Initial length of the todo list is 3 // 3 default tasks
   test("get_todos", () => {
-    expect(todo_service.get_todos().todo.length).toEqual(3);
+    expect(todo_service.get_todos().todo.length).toEqual(4);
   });
 
   // Write all your test cases here that corresponds to software requirements
@@ -31,5 +32,13 @@ describe("testing add functiolity", () => {
         done: true,
       })
     ).toBe(oldLength + 1);
+  });
+});
+
+describe("testing Delete method", () => {
+  let todoService2 = new todoservice();
+  let oldLength = todoService2.get_todos().todo.length;
+  test("delete instance", () => {
+    expect(todoService2.delete_todo("T2")).toBe(oldLength - 1);
   });
 });

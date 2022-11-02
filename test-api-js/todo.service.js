@@ -12,6 +12,11 @@ class todoservice {
         done: false,
       },
       {
+        title: "T2",
+        description: "D2",
+        done: true,
+      },
+      {
         title: "T1",
         description: "D1",
         done: false,
@@ -34,9 +39,20 @@ class todoservice {
   }
 
   delete_todo(id) {
-    let index = this.todos.todo.indexOf(id)
-    if(index>-1){
-        this.todos.todo.splice(index, 1);
+    let todo = this.todos.todo;
+    let size = todo.length;
+    let index = -1;
+    for(let i=0; i<size; i++){
+        if(todo[i].title = id){
+            index = i; break;
+        }else if(todo[i].description = id){
+            index = i; break;
+        }else if(todo[i].done = id){
+            index = i; break;
+        }
+    }
+    if (index > -1) {
+      this.todos.todo.splice(index, 1);
     }
     return this.todos.todo.length;
   }
