@@ -1,6 +1,5 @@
 var todoservice = require("./todo.service.js");
 describe("todo test suite", () => {
-
   test("truth_value", () => {
     expect(true).toBe(true);
   });
@@ -40,5 +39,15 @@ describe("testing Delete method", () => {
   let oldLength = todoService2.get_todos().todo.length;
   test("delete instance", () => {
     expect(todoService2.delete_todo("T2")).toBe(oldLength - 1);
+  });
+});
+
+describe("Testing update method", () => {
+  let todoService3 = new todoservice();
+  let oldLength = todoService3.get_todos().todo.length;
+  test("Update instance", () => {
+    expect(todoService3.update_todo(1, {
+        
+    }));
   });
 });

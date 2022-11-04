@@ -58,7 +58,8 @@ class todoservice {
   }
 
   update_todo(id, todo) {
-    // Your code here
+    this.todos.todo[id] = todo;
+    return this.todos.todo[id];
   }
 }
 
