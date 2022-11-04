@@ -44,10 +44,11 @@ describe("testing Delete method", () => {
 
 describe("Testing update method", () => {
   let todoService3 = new todoservice();
-  let oldLength = todoService3.get_todos().todo.length;
   test("Update instance", () => {
-    expect(todoService3.update_todo(1, {
-        
-    }));
+    expect(todoService3.update_todo(3, {
+        title : "Updated-T1",
+        description: "Updated-T2",
+        done: true
+    })).toBe(todoService3.get_todos().todo[3]);
   });
 });
