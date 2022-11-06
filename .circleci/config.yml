@@ -1,18 +1,8 @@
 version: 2.1
-
-executors:
-  node-cypress:
-    docker:
-      - image: "cypress/browsers:node16.14.0-chrome99-ff97"
 orbs:
-  node: circleci/node@5
   python: circleci/python@2.0.3
-
 jobs:
-
-  # job for testing Python program
-
-   build-and-test-python:
+  build-and-test-python:
     docker:
       - image: cimg/python:3.10.4
     steps:
@@ -25,8 +15,6 @@ jobs:
       - run:
           name: current directory
           command: pwd
-
-  # job for testing test_javascript program
   build-and-test-javascript:
      
      docker:
@@ -40,25 +28,8 @@ jobs:
        - run:
            name: run tests
            command: cd test_javascript && npm run test
-
-  # job for testing NodeJs api
-
-  build-and-test-api:
-     
-     docker:
-       - image: cimg/node:16.16
-     steps:
-       - checkout
-       - run:
-           name: install dependencies
-           command: cd test-api-js && npm install
-      
-       - run:
-           name: run tests
-           command: cd test-api-js && npm run test
-
 workflows:
-  sample: 
+  sample:
     jobs:
       - build-and-test-python:
           filters:
@@ -66,4 +37,3 @@ workflows:
               only:
                 - master
       - build-and-test-javascript
-      - build-and-test-api
